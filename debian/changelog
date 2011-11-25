@@ -1,0 +1,46 @@
+wireless-regdb (2011.04.28-1ubuntu3) precise; urgency=low
+
+  * Don't install /lib/crda/pubkeys/linville.key.pub.pem; this conflicts
+    with crda.
+
+ -- Colin Watson <cjwatson@ubuntu.com>  Fri, 25 Nov 2011 20:05:57 +0000
+
+wireless-regdb (2011.04.28-1ubuntu2) precise; urgency=low
+
+  * Make wireless-regdb Multi-Arch: foreign
+
+ -- Tim Gardner <tim.gardner@canonical.com>  Mon, 21 Nov 2011 10:51:52 -0700
+
+wireless-regdb (2011.04.28-1ubuntu1) oneiric; urgency=low
+
+  * debian/rules: (LP: #831364)
+    - replace REGDB_AUTHOR with the ubuntu-devel-discuss@ list, to create our
+      own private key for signing the regulatory data.
+    - explicitly override dh_auto_build to make a new private key. 
+    - don't remove pubkeys, to make sure the key can be verified.
+  * debian/patches/dont_auto_create_keypair: drop the tilde from the key path,
+    since it isn't guaranteed to work on buildds.
+
+ -- Mathieu Trudel-Lapierre <mathieu-tl@ubuntu.com>  Thu, 22 Sep 2011 11:10:26 -0400
+
+wireless-regdb (2011.04.28-1) unstable; urgency=low
+
+  * New upstream version (Closes: #626816)
+    - Update regulatory rules for Netherlands (NL)
+    - web/Regulatory.py is now under the ISC licence
+
+ -- Ben Hutchings <ben@decadent.org.uk>  Tue, 17 May 2011 02:40:08 +0100
+
+wireless-regdb (2010.11.24-2) unstable; urgency=low
+
+  * debian/copyright: Correct licence of web/Regulatory.py
+  * debian/control: Add references to git repository
+
+ -- Ben Hutchings <ben@decadent.org.uk>  Tue, 12 Apr 2011 00:15:21 +0100
+
+wireless-regdb (2010.11.24-1) unstable; urgency=low
+
+  * Initial release (Closes: #572220)
+    - Most packaging was done by Kel Modderman and Stefan Lippers-Hollmann
+
+ -- Ben Hutchings <ben@decadent.org.uk>  Mon, 11 Apr 2011 14:09:21 +0100

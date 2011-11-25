@@ -1,0 +1,16 @@
+If you need to make an NMU, you'll first have to create a key-pair.
+
+1. Choose your author ID; I suggest your debian.org address.
+2. Generate the private key by running:
+       make REGDB_AUTHOR=<author-id> ~/.wireless-regdb-<author-id>.key.priv.pem
+3. Generate the public key by running:
+       make REGDB_AUTHOR=<author-id> <author-id>.key.pub.pem
+4. Either add the public key to the crda package in debian/pubkeys, or
+   modify this package to install it in /lib/crda/pubkeys.
+5. Set REGDB_AUTHOR=<author-id> in debian/rules.
+
+Note, you cannot build this package using an automated builder.  You can
+use e.g. 'pbuilder --login --bindmounts /home' to create a controlled
+chroot in which to build it.
+
+ -- Ben Hutchings <ben@decadent.org.uk>, Mon, 11 Apr 2011 13:31:22 +0100

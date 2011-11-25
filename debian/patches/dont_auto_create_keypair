@@ -1,0 +1,38 @@
+From: Ben Hutchings <ben@decadent.org.uk>
+Subject: [PATCH] Don't automatically create key-pairs
+
+If the private key is missing, this is probably an error in the build
+configuration.  Don't create a private key unless it's the only
+explicit goal for make.
+
+Signed-off-by: Ben Hutchings <ben@decadent.org.uk>
+
+Index: wireless-regdb/Makefile
+===================================================================
+--- wireless-regdb.orig/Makefile	2011-09-22 09:07:56.216661000 -0400
++++ wireless-regdb/Makefile	2011-09-22 11:03:21.419882576 -0400
+@@ -29,7 +29,7 @@
+ 			echo custom-user; \
+ 		fi)
+ 
+-REGDB_PRIVKEY ?= ~/.wireless-regdb-$(REGDB_AUTHOR).key.priv.pem
++REGDB_PRIVKEY ?= .wireless-regdb-$(REGDB_AUTHOR).key.priv.pem
+ REGDB_PUBKEY ?= $(REGDB_AUTHOR).key.pub.pem
+ 
+ REGDB_UPSTREAM_PUBKEY ?= linville.key.pub.pem
+@@ -67,8 +67,15 @@
+ 
+ 
+ $(REGDB_PRIVKEY):
++ifeq ($(MAKECMDGOALS),$(REGDB_PRIVKEY))
+ 	@echo "Generating private key for $(REGDB_AUTHOR)..."
+ 	openssl genrsa -out $(REGDB_PRIVKEY) 2048
++else
++	@echo "No private key found. To generate a private key, run:"
++	@echo "    make .wireless-regdb-<author-id>.key.priv.pem"
++	@echo "Your author-id is currently \"$(REGDB_AUTHOR)\"; set REGDB_AUTHOR to override this."
++	@exit 1
++endif
+ 
+ ifneq ($(shell test -e $(DISTRO_PRIVKEY) && echo yes),yes)
+ $(DISTRO_PRIVKEY):

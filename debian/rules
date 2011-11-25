@@ -1,0 +1,23 @@
+#!/usr/bin/make -f
+
+export CRDA_PATH     = /lib/crda
+export REGDB_AUTHOR  = ubuntu-devel-discuss@lists.ubuntu.com
+export V             = 1
+# prevent the build system from calling lsb_release
+export LSB_ID        = Debian/Ubuntu
+
+%:
+	dh ${@}
+
+override_dh_auto_build:
+	make .wireless-regdb-$(REGDB_AUTHOR).key.priv.pem
+	dh_auto_build
+
+override_dh_install:
+	make DESTDIR=debian/wireless-regdb install
+# crda will install public keys
+	rm -f debian/wireless-regdb/lib/crda/pubkeys/linville.key.pub.pem
+
+override_dh_auto_clean:
+	dh_auto_clean -- mrproper
+	rm -f sha1sum.txt

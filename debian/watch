@@ -1,0 +1,2 @@
+version=3
+http://wireless.kernel.org/download/wireless-regdb/wireless-regdb-(.*)\.tar\.bz2 debian

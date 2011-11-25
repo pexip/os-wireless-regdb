@@ -1,0 +1,19 @@
+From: Ben Hutchings <ben@decadent.org.uk>
+Subject: [PATCH] Add 'EU' regulatory domain for backward compatibility
+
+Signed-off-by: Ben Hutchings <ben@decadent.org.uk>
+
+--- a/db.txt
++++ b/db.txt
+@@ -695,3 +695,11 @@ country ZA:
+ country ZW:
+ 	(2402 - 2482 @ 40), (N/A, 20)
+ 
++# For backward compatibility with built-in regulatory domains, provide
++# the 'country' code EU representing ETSI regulations.
++country EU:
++	(2402 - 2482 @ 40), (N/A, 20)
++	(5170 - 5250 @ 40), (N/A, 20)
++	(5250 - 5330 @ 40), (N/A, 20), DFS
++	(5490 - 5710 @ 40), (N/A, 27), DFS
++
