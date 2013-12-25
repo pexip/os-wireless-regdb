@@ -1,3 +1,9 @@
+wireless-regdb (2011.04.28-1ubuntu3pexip1) pexip; urgency=low
+
+  * Prepare Pexip packaging
+
+ -- John-Mark Bell <jmb@pexip.com>  Wed, 25 Dec 2013 05:25:56 +0000
+
 wireless-regdb (2011.04.28-1ubuntu3) precise; urgency=low
 
   * Don't install /lib/crda/pubkeys/linville.key.pub.pem; this conflicts

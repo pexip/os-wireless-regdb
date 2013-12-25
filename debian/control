@@ -1,7 +1,8 @@
 Source: wireless-regdb
 Section: net
 Priority: optional
-Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Maintainer: Pexip AS <packaging@pexip.com>
+XSBC-Pexip-Original-Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 XSBC-Original-Maintainer: Ben Hutchings <ben@decadent.org.uk>
 Build-Depends: debhelper (>= 8),
  openssl,
@@ -11,6 +12,7 @@ Standards-Version: 3.9.1
 Vcs-Git: git://git.debian.org/kernel/wireless-regdb.git
 Vcs-Browser: http://git.debian.org/?p=kernel/wireless-regdb.git
 Homepage: http://wireless.kernel.org/en/developers/Regulatory/#Theregulatorydatabase
+XS-Pexip-Upstream: http://archive.ubuntu.com/ubuntu/ precise
 
 Package: wireless-regdb
 Architecture: all
